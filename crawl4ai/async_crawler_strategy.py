@@ -131,6 +131,9 @@ class AsyncPlaywrightCrawlerStrategy(AsyncCrawlerStrategy):
         """
         await self.browser_manager.close()
 
+        # Reset the static Playwright instance
+        BrowserManager._playwright_instance = None
+
     async def kill_session(self, session_id: str):
         """
         Kill a browser session and clean up resources.
